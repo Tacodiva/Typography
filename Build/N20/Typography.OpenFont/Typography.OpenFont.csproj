@@ -113,6 +113,9 @@
     <Compile Include="..\..\..\Typography.OpenFont\Tables.AdvancedLayout\ScriptTable.cs">
       <Link>Tables.AdvanceLayout\ScriptTable.cs</Link>
     </Compile>
+    <Compile Include="..\..\..\Typography.OpenFont\Tables.AdvancedLayout\SvgTable.cs">
+      <Link>Tables.AdvanceLayout\SvgTable.cs</Link>
+    </Compile>
     <Compile Include="..\..\..\Typography.OpenFont\Tables.Others\EBLCTable.cs">
       <Link>Tables.Others\EBLCTable.cs</Link>
     </Compile>

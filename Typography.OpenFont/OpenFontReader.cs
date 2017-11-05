@@ -59,6 +59,7 @@ namespace Typography.OpenFont
         }
 
 
+
         public Typeface Read(Stream stream, ReadFlags readFlags = ReadFlags.Full)
         {
             var little = BitConverter.IsLittleEndian;
@@ -110,6 +111,18 @@ namespace Typography.OpenFont
                 }
 
                 EBLCTable fontBmpTable = ReadTableIfExists(tables, input, new EBLCTable());
+
+                //test svg table
+                SvgTable svgTable = ReadTableIfExists(tables, input, new SvgTable());
+                if (svgTable != null)
+                {
+                    //TODO:
+                    //some svg may have CCF table but dose not have glyf
+                    //so the error may occur in next step since
+                    //this version we still not support CCF table
+
+                }
+
                 //---------------------------------------------
                 //about truetype instruction init 
 

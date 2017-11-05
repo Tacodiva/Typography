@@ -2,6 +2,7 @@
 
 using System;
 using System.IO;
+using System.IO.Compression;
 
 namespace Typography.OpenFont.IO
 {
@@ -46,4 +47,6 @@ namespace Typography.OpenFont.IO
             base.Dispose(disposing);
         }
     }
+
+    
 }
