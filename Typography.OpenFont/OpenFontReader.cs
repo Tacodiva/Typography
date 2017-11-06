@@ -120,7 +120,10 @@ namespace Typography.OpenFont
                     //some svg may have CCF table but dose not have glyf
                     //so the error may occur in next step since
                     //this version we still not support CCF table
+                    if (glyf == null)
+                    {
 
+                    }
                 }
 
                 //---------------------------------------------
