@@ -1,4 +1,4 @@
-﻿//Apapche, 2018, apache/pdfbox Authors ( https://github.com/apache/pdfbox) 
+﻿//Apache2, 2018, Apache/PdfBox Authors ( https://github.com/apache/pdfbox) 
 //
 //
 //Apache PDFBox
@@ -43,15 +43,23 @@ namespace Typography.OpenFont.Tables
 
     class CFFTable : TableEntry
     {
+        Cff1FontSet _cff1FontSet;
 
         public override string Name
         {
             get { return "CFF "; } //4 char, left 1 blank whitespace
         }
 
+        internal Cff1FontSet Cff1FontSet { get { return _cff1FontSet; } }
+
         protected override void ReadContentFrom(BinaryReader reader)
         {
             uint tableOffset = this.Header.Offset;
+            if (reader.BaseStream.Position != tableOffset)
+            {
+
+            }
+
             //
             //
             //Table 8 Header Format
@@ -61,7 +69,6 @@ namespace Typography.OpenFont.Tables
             //Card8     hdrSize Header size(bytes)
             //OffSize   offSize Absolute offset(0) size
             byte[] header = reader.ReadBytes(4);
-
             byte major = header[0];
             byte minor = header[1];
             byte hdrSize = header[2];
@@ -75,13 +82,14 @@ namespace Typography.OpenFont.Tables
                 case 1:
                     {
                         Cff1Parser cff1 = new Cff1Parser();
-                        cff1.ParseAfterHader(reader);
+                        cff1.ParseAfterHeader(tableOffset, reader);
+                        _cff1FontSet = cff1.ResultCff1FontSet;
                     }
                     break;
                 case 2:
                     {
                         Cff2Parser cff2 = new Cff2Parser();
-                        cff2.ParseAfterHader(reader);
+                        cff2.ParseAfterHeader(reader);
                     }
                     break;
             }
