@@ -67,10 +67,6 @@ namespace Typography.OpenFont.CFF
         internal List<string> fontNames;
         internal List<Cff1Font> _fonts = new List<Cff1Font>();
         internal string[] _uniqueStringTable;
-
-
-
-
         //
         internal const int nStdStrings = 390;
         internal static readonly string[] _StdStrings = new string[] {
@@ -478,16 +474,11 @@ namespace Typography.OpenFont.CFF
         internal int defaultWidthX;
         internal int nominalWidthX;
 
-
-
-
-
         Dictionary<string, Glyph> _cachedGlyphDicByName;
         public Glyph GetGlyphByName(string name)
         {
             if (_cachedGlyphDicByName == null)
             {
-                //create a cache ... 
                 _cachedGlyphDicByName = new Dictionary<string, Glyph>();
                 int j = glyphs.Length;
                 for (int i = 1; i < j; ++i)
@@ -499,9 +490,21 @@ namespace Typography.OpenFont.CFF
             Glyph found;
             _cachedGlyphDicByName.TryGetValue(name, out found);
             return found;
-
         }
 
+        internal IEnumerable<GlyphNameMap> GetGlyphNameIter()
+        {
+            int j = glyphs.Length;
+#if DEBUG
+            if (j > ushort.MaxValue) { throw new NotSupportedException(); }
+#endif
+            for (int i = 1; i < j; ++i)
+            {
+                Glyph cff1Glyph = glyphs[i];
+                yield return new GlyphNameMap((ushort)i, cff1Glyph._cff1GlyphData.Name);
+            }
+
+        }
     }
     public class Cff1GlyphData
     {
@@ -511,7 +514,7 @@ namespace Typography.OpenFont.CFF
         }
 
         public string Name { get; set; }
-        public int GlyphIndex { get; set; }
+        public ushort GlyphIndex { get; set; }
         internal Type2GlyphInstructionList GlyphInstructions { get; set; }
 
 #if DEBUG
@@ -1038,7 +1041,7 @@ namespace Typography.OpenFont.CFF
                 //now we can parse the raw glyph instructions 
 
                 Cff1GlyphData glyphData = new Cff1GlyphData();
-                glyphData.GlyphIndex = i;
+                glyphData.GlyphIndex = (ushort)i;
                 glyphs[i] = new Glyph(_currentCff1Font, glyphData);
                 ////
                 //if (i == 5)
@@ -1050,7 +1053,7 @@ namespace Typography.OpenFont.CFF
                 {
                     instList.Kind = Type2GlyphInstructionListKind.GlyphDescription;
                     glyphData.GlyphInstructions = instList;
-                } 
+                }
             }
         }
 
@@ -1282,25 +1285,36 @@ namespace Typography.OpenFont.CFF
             //get registered operator by its key
             return CFFOperator.GetOperatorByKey(b0, b1);
         }
+
+
+
         double ReadRealNumber()
         {
+            //from https://typekit.files.wordpress.com/2013/05/5176.cff.pdf
+            // A real number operand is provided in addition to integer
+            //operands.This operand begins with a byte value of 30 followed
+            //by a variable-length sequence of bytes.Each byte is composed
+            //of two 4 - bit nibbles asdefined in Table 5.
+
+            //The first nibble of a
+            //pair is stored in the most significant 4 bits of a byte and the
+            //second nibble of a pair is stored in the least significant 4 bits of a byte
+
+
 
             StringBuilder sb = new StringBuilder();
             bool done = false;
             bool exponentMissing = false;
-
-            int[] nibbles = { 0, 0 };
-
             while (!done)
             {
                 int b = _reader.ReadByte();
-                //TODO: review here
-                nibbles[0] = b / 16;
-                nibbles[1] = b % 16;
 
-                for (int i = 0; i < 2; ++i)
+                int nb_0 = (b >> 4) & 0xf;
+                int nb_1 = (b) & 0xf;
+
+                for (int i = 0; !done && i < 2; ++i)
                 {
-                    int nibble = nibbles[i];
+                    int nibble = (i == 0) ? nb_0 : nb_1;
 
                     switch (nibble)
                     {
@@ -1659,9 +1673,14 @@ namespace Typography.OpenFont.CFF
             Register(12, 12, "StemSnapH", OperatorOperandKind.Delta);
             Register(12, 13, "StemSnapV", OperatorOperandKind.Delta);
             Register(12, 14, "ForceBold", OperatorOperandKind.Boolean);
-            Register(12, 15, "LanguageGroup", OperatorOperandKind.Number);
-            Register(12, 16, "ExpansionFactor", OperatorOperandKind.Number);
-            Register(12, 17, "initialRandomSeed", OperatorOperandKind.Number);
+
+            //reserved 12 15//https://typekit.files.wordpress.com/2013/05/5176.cff.pdf
+            //reserved 12 16//https://typekit.files.wordpress.com/2013/05/5176.cff.pdf
+            
+            Register(12, 17, "LanguageGroup", OperatorOperandKind.Number); //https://typekit.files.wordpress.com/2013/05/5176.cff.pdf
+            Register(12, 18, "ExpansionFactor", OperatorOperandKind.Number); //https://typekit.files.wordpress.com/2013/05/5176.cff.pdf
+            Register(12, 19, "initialRandomSeed", OperatorOperandKind.Number); //https://typekit.files.wordpress.com/2013/05/5176.cff.pdf
+
             Register(19, "Subrs", OperatorOperandKind.Number);
             Register(20, "defaultWidthX", OperatorOperandKind.Number);
             Register(21, "nominalWidthX", OperatorOperandKind.Number);
