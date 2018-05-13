@@ -81,17 +81,13 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Build\Android\Typography.GlyphLayout\Typography.GlyphLayout.Android.csproj">
+    <ProjectReference Include="..\..\..\Build\Android\Typography.GlyphLayout\Typography.GlyphLayout.csproj">
       <Project>{6abd1c6e-866d-42a8-99d0-7780b4ad08d3}</Project>
-      <Name>Typography.GlyphLayout.Android</Name>
+      <Name>Typography.GlyphLayout</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Build\Android\Typography.OpenFont\Typography.OpenFont\Typography.OpenFont.Android.csproj">
+    <ProjectReference Include="..\..\..\Build\Android\Typography.OpenFont\Typography.OpenFont\Typography.OpenFont.csproj">
       <Project>{9e204a4b-f9b8-4f7f-a792-184260b3494d}</Project>
-      <Name>Typography.OpenFont.Android</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Typography.Contours.Android\Typography.Contours.Android.csproj">
-      <Project>{d3b497c0-b0cf-4cd1-9eb7-64d42528daec}</Project>
-      <Name>Typography.Contours.Android</Name>
+      <Name>Typography.OpenFont</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\x_autogen2\PixelFarm.MiniAgg.One\PixelFarm.MiniAgg.One.csproj">
       <Project>{fb5f78f5-c921-405d-8f21-42f7c15c2ad9}</Project>

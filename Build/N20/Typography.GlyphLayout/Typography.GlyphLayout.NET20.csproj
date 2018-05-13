@@ -58,9 +58,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Typography.OpenFont\Typography.OpenFont.csproj">
+    <ProjectReference Include="..\Typography.OpenFont\Typography.OpenFont.NET20.csproj">
       <Project>{f7d71e61-9342-4dd7-9afd-69045f2ec98b}</Project>
-      <Name>Typography.OpenFont</Name>
+      <Name>Typography.OpenFont.NET20</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

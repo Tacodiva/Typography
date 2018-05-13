@@ -76,17 +76,21 @@
     <Compile Include="TypefaceChangedEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Build\N20\Typography.GlyphLayout\Typography.GlyphLayout.csproj">
+    <ProjectReference Include="..\..\..\Build\N20\Typography.GlyphLayout\Typography.GlyphLayout.NET20.csproj">
       <Project>{c6807d05-09be-4313-9f8b-bd2d51c55819}</Project>
-      <Name>Typography.GlyphLayout</Name>
+      <Name>Typography.GlyphLayout.NET20</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Build\N20\Typography.OpenFont\Typography.OpenFont.csproj">
+    <ProjectReference Include="..\..\..\Build\N20\Typography.OpenFont\Typography.OpenFont.NET20.csproj">
       <Project>{f7d71e61-9342-4dd7-9afd-69045f2ec98b}</Project>
-      <Name>Typography.OpenFont</Name>
+      <Name>Typography.OpenFont.NET20</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\PixelFarm.Typography\PixelFarm.Typography.csproj">
       <Project>{540a2ea6-dae3-4625-8951-b2c3118603a4}</Project>
       <Name>PixelFarm.Typography</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Typography.Contours.NET20\Typography.Contours.NET20.csproj">
+      <Project>{b2b8cb11-317a-471e-b7d1-08e5133b4563}</Project>
+      <Name>Typography.Contours.NET20</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Typography.TextServices\Typography.TextServices.csproj">
       <Project>{fe23e283-a667-4e68-b381-c7d8598d3688}</Project>

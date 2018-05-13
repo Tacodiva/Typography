@@ -43,17 +43,17 @@
     <Compile Include="TextServiceHub.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Build\N20\Typography.GlyphLayout\Typography.GlyphLayout.csproj">
+    <ProjectReference Include="..\Build\N20\Typography.GlyphLayout\Typography.GlyphLayout.NET20.csproj">
       <Project>{c6807d05-09be-4313-9f8b-bd2d51c55819}</Project>
-      <Name>Typography.GlyphLayout</Name>
+      <Name>Typography.GlyphLayout.NET20</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Build\N20\Typography.OpenFont\Typography.OpenFont.csproj">
+    <ProjectReference Include="..\Build\N20\Typography.OpenFont\Typography.OpenFont.NET20.csproj">
       <Project>{f7d71e61-9342-4dd7-9afd-69045f2ec98b}</Project>
-      <Name>Typography.OpenFont</Name>
+      <Name>Typography.OpenFont.NET20</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Typography.Contours\Typography.Contours.csproj">
+    <ProjectReference Include="..\Typography.Contours\Typography.Contours2.csproj">
       <Project>{e4a1c3c3-1c1c-4e11-a2e6-a1fafd6652c7}</Project>
-      <Name>Typography.Contours</Name>
+      <Name>Typography.Contours2</Name>
     </ProjectReference>
     <ProjectReference Include="..\Typography.TextBreak\Typography.TextBreak\Typography.TextBreak.csproj">
       <Project>{09ec5531-d272-40db-87a4-b2d353846cc2}</Project>

@@ -49,6 +49,9 @@
     <Compile Include="GlyphAnalysis\GlyphContourBuilder.cs" />
     <Compile Include="GlyphAnalysis\0_GlyphTriangle.cs" />
     <Compile Include="GlyphAnalysis\MyMath.cs" />
+    <Compile Include="GlyphPathBuilder\GlyphPathBuilder.cs" />
+    <Compile Include="GlyphPathBuilder\GlyphPathBuilderBase.cs" />
+    <Compile Include="GlyphPathBuilder\HintTechnique.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GlyphAnalysis\Rect.cs" />
   </ItemGroup>
@@ -57,9 +60,9 @@
       <Project>{c5e5802d-6a45-4fe9-bae7-5f0ae91d72c1}</Project>
       <Name>PixelFarm.Triangulation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Build\N20\Typography.OpenFont\Typography.OpenFont.csproj">
-      <Project>{29ed0dfe-373c-4e98-bd4b-43f8e5fb16f6}</Project>
-      <Name>Typography.OpenFont</Name>
+    <ProjectReference Include="..\Build\N20\Typography.OpenFont\Typography.OpenFont.NET20.csproj">
+      <Project>{F7D71E61-9342-4DD7-9AFD-69045F2EC98B}</Project>
+      <Name>Typography.OpenFont.NET20</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

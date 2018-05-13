@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <AssemblyName>Typography.Contours</AssemblyName>
+    <RootNamespace>Typography.Contours</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Build\NetCore\Typography.OpenFont\Typography.OpenFont\Typography.OpenFont.NETCORE.csproj" />
+  </ItemGroup>
+
+  <Import Project="..\Typography.Contours\Typography.Contours.projitems" Label="Shared" />
+
+</Project>

@@ -111,15 +111,21 @@
     <Content Include="Entitlements.plist" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Build\IOS\Typography.GlyphLayout\Typography.GlyphLayout.csproj">
+    <ProjectReference Include="..\..\..\Build\IOS\Typography.GlyphLayout\Typography.GlyphLayout.IOS.csproj">
       <Project>{7b742f80-62ce-401b-96c6-cfcc30002f19}</Project>
-      <Name>Typography.GlyphLayout</Name>
+      <Name>Typography.GlyphLayout.IOS</Name>
       <IsAppExtension>false</IsAppExtension>
       <IsWatchApp>false</IsWatchApp>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Build\IOS\Typography.OpenFont\Typography.OpenFont.csproj">
+    <ProjectReference Include="..\..\..\Build\IOS\Typography.OpenFont\Typography.OpenFont.IOS.csproj">
       <Project>{a96adb72-b7fd-4f8f-acf0-df1274ddda6b}</Project>
-      <Name>Typography.OpenFont</Name>
+      <Name>Typography.OpenFont.IOS</Name>
+      <IsAppExtension>false</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Typography.Contours.IOS\Typography.Contours.IOS.csproj">
+      <Project>{e71f3053-056c-4381-9638-048ed73bdff6}</Project>
+      <Name>Typography.Contours.IOS</Name>
       <IsAppExtension>false</IsAppExtension>
       <IsWatchApp>false</IsWatchApp>
     </ProjectReference>

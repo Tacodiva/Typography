@@ -5,12 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{7B742F80-62CE-401B-96C6-CFCC30002F19}</ProjectGuid>
+    <ProjectGuid>{E71F3053-056C-4381-9638-048ED73BDFF6}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TemplateGuid>{a52b8a63-bc84-4b47-910d-692533484892}</TemplateGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Typography.GlyphLayout</RootNamespace>
+    <RootNamespace>Typography.Contours</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>Typography.GlyphLayout</AssemblyName>
+    <AssemblyName>Typography.Contours</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,13 +44,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Typography.OpenFont\Typography.OpenFont.csproj">
+    <ProjectReference Include="..\Build\IOS\Typography.OpenFont\Typography.OpenFont.IOS.csproj">
       <Project>{a96adb72-b7fd-4f8f-acf0-df1274ddda6b}</Project>
-      <Name>Typography.OpenFont</Name>
+      <Name>Typography.OpenFont.IOS</Name>
       <IsAppExtension>false</IsAppExtension>
       <IsWatchApp>false</IsWatchApp>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="..\..\..\Typography.GlyphLayout\Typography.GlyphLayout.projitems" Label="Shared" />
+  <Import Project="..\Typography.Contours\Typography.Contours.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

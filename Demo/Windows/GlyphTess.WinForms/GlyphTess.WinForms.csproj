@@ -51,15 +51,6 @@
     <Compile Include="..\..\Shared\DrawingGL\TessTool.cs">
       <Link>DrawingGL\TessTool.cs</Link>
     </Compile>
-    <Compile Include="..\..\Shared\GlyphPathBuilder\GlyphPathBuilder.cs">
-      <Link>GlyphPathBuilder\GlyphPathBuilder.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Shared\GlyphPathBuilder\GlyphPathBuilderBase.cs">
-      <Link>GlyphPathBuilder\GlyphPathBuilderBase.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Shared\GlyphPathBuilder\HintTechnique.cs">
-      <Link>GlyphPathBuilder\HintTechnique.cs</Link>
-    </Compile>
     <Compile Include="..\..\Shared\Tesselate\ActiveRegion.cs">
       <Link>Tess\ActiveRegion.cs</Link>
     </Compile>
@@ -115,13 +106,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Build\N20\Typography.GlyphLayout\Typography.GlyphLayout.csproj">
+    <ProjectReference Include="..\..\..\Build\N20\Typography.GlyphLayout\Typography.GlyphLayout.NET20.csproj">
       <Project>{c6807d05-09be-4313-9f8b-bd2d51c55819}</Project>
-      <Name>Typography.GlyphLayout</Name>
+      <Name>Typography.GlyphLayout.NET20</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Build\N20\Typography.OpenFont\Typography.OpenFont.csproj">
+    <ProjectReference Include="..\..\..\Build\N20\Typography.OpenFont\Typography.OpenFont.NET20.csproj">
       <Project>{f7d71e61-9342-4dd7-9afd-69045f2ec98b}</Project>
-      <Name>Typography.OpenFont</Name>
+      <Name>Typography.OpenFont.NET20</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Typography.Contours.NET20\Typography.Contours.NET20.csproj">
+      <Project>{b2b8cb11-317a-471e-b7d1-08e5133b4563}</Project>
+      <Name>Typography.Contours.NET20</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
