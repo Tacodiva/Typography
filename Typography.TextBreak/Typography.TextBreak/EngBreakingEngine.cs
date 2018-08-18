@@ -44,8 +44,9 @@ namespace Typography.TextBreak
             LexState lexState = LexState.Init;
             int endBefore = start + len;
 
+            breakBounds.startIndex = start;
 
-            char first = (char)1;
+            char first = (char)0;
             char last = (char)255;
 
             for (int i = start; i < endBefore; ++i)
@@ -54,7 +55,7 @@ namespace Typography.TextBreak
                 if (c < first || c > last)
                 {
                     //clear accum state
-                    if (i > start)
+                    if (i > breakBounds.startIndex)
                     {
                         //some remaining data
                         breakBounds.length = i - breakBounds.startIndex;
@@ -71,36 +72,22 @@ namespace Typography.TextBreak
                     case LexState.Init:
                         {
                             //check char
-                            if (c == '\r')
+                            if (c == '\r' && i < endBefore - 1 && input[i + 1] == '\n')
                             {
-                                //check next if '\n'
-                                if (i < endBefore - 1)
-                                {
-                                    if (input[i + 1] == '\n')
-                                    {
-                                        //this is '\r\n' linebreak
-                                        breakBounds.startIndex = i;
-                                        breakBounds.length = 2;
-                                        breakBounds.kind = WordKind.NewLine;
-                                        //
-                                        onBreak(breakBounds);
-                                        //
-                                        breakBounds.length = 0;
-                                        lexState = LexState.Init;
+                                //this is '\r\n' linebreak
+                                breakBounds.startIndex = i;
+                                breakBounds.length = 2;
+                                breakBounds.kind = WordKind.NewLine;
+                                //
+                                onBreak(breakBounds);
+                                //
+                                breakBounds.length = 0;
+                                lexState = LexState.Init;
 
-                                        i++;
-                                        continue;
-                                    }
-                                }
-                                else
-                                {
-                                    //sinple \r?
-                                    //to whitespace?
-                                    lexState = LexState.Whitespace;
-                                    breakBounds.startIndex = i;
-                                }
+                                i++;
+                                continue;
                             }
-                            else if (c == '\n')
+                            else if (c == '\r' || c == '\n' || c == 0x85) //U+0085 NEXT LINE
                             {
                                 breakBounds.startIndex = i;
                                 breakBounds.length = 1;
@@ -162,9 +149,21 @@ namespace Typography.TextBreak
                                 lexState = LexState.Init;
                                 continue;
                             }
+                            else if (char.IsControl(c))
+                            {
+                                breakBounds.startIndex = i;
+                                breakBounds.length = 1;
+                                breakBounds.kind = WordKind.Control;
+                                //
+                                onBreak(breakBounds);
+                                //
+                                breakBounds.length = 0;
+                                lexState = LexState.Init;
+                                continue;
+                            }
                             else
                             {
-                                throw new System.NotSupportedException();
+                                throw new System.NotSupportedException($"The character {c} (U+{((ushort)c).ToString("X4")}) was unhandled.");
                             }
                         }
                         break;
