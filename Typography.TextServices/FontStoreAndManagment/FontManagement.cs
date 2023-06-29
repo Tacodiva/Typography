@@ -300,12 +300,12 @@ namespace Typography.FontManagement
             InstalledTypefaceGroup? selectedFontGroup = null;
 
             string? fontSubFamUpperCaseName = newTypeface.TypographicFontSubFamily;
-            bool use_typographicSubFam = true;
+            // bool use_typographicSubFam = true;
             if (fontSubFamUpperCaseName == null)
             {
                 //switch to FontSubFamily, this should not be null!
                 fontSubFamUpperCaseName = newTypeface.FontSubFamily;
-                use_typographicSubFam = false;
+                // use_typographicSubFam = false;
             }
             if (fontSubFamUpperCaseName == null) throw new NotImplementedException();
             fontSubFamUpperCaseName = fontSubFamUpperCaseName.ToUpper();
