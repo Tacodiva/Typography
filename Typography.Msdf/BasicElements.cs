@@ -167,8 +167,17 @@ namespace Msdfgen
                 }
             }
         }
+        public void findBounds(out double left, out double bottom, out double right, out double top)
+        {
+            double l = 0, b = 0, r = 0, t = 0;
+            findBoundsRef(ref l, ref b, ref r, ref t);
+            left = l;
+            bottom = b;
+            right = r;
+            top = t;
+        }
 
-        public void findBounds(ref double left, ref double bottom, ref double right, ref double top)
+        public void findBoundsRef(ref double left, ref double bottom, ref double right, ref double top)
         {
             int j = contours.Count;
             for (int i = 0; i < j; ++i)
@@ -221,7 +230,7 @@ namespace Msdfgen
                   ));
         }
 
-        
+
         public void findBounds(ref double left, ref double bottom, ref double right, ref double top)
         {
             if (!_hasCalculatedBounds)
