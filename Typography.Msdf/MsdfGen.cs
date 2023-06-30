@@ -361,12 +361,12 @@ namespace Msdfgen
                             winding = -windings[n];
                         }
 
-                        if (r.nearEdge != null)
-                            r.nearEdge.distanceToPseudoDistance(ref r.minDistance, p, r.nearParam);
-                        if (g.nearEdge != null)
-                            g.nearEdge.distanceToPseudoDistance(ref g.minDistance, p, g.nearParam);
-                        if (b.nearEdge != null)
-                            b.nearEdge.distanceToPseudoDistance(ref b.minDistance, p, b.nearParam);
+                        // if (r.nearEdge != null)
+                        //     r.nearEdge.distanceToPseudoDistance(ref r.minDistance, p, r.nearParam);
+                        // if (g.nearEdge != null)
+                        //     g.nearEdge.distanceToPseudoDistance(ref g.minDistance, p, g.nearParam);
+                        // if (b.nearEdge != null)
+                        //     b.nearEdge.distanceToPseudoDistance(ref b.minDistance, p, b.nearParam);
                         //--------------
                         medMinDistance = median(r.minDistance.distance, g.minDistance.distance, b.minDistance.distance);
                         contourSD[n].r = r.minDistance.distance;
